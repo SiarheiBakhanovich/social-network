@@ -7,3 +7,8 @@
 .item {
     color: white;
 }
+
+
+.item .active {
+    color: red;
+}
