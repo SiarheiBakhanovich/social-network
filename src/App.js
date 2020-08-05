@@ -4,11 +4,11 @@ import Header from "./Components/Header/Header";
 import Navbar from "./Components/Navbar/Navbar";
 import Profile from "./Components/Profile/Profile";
 import Dialogs from "./Components/Dialogs/Dialogs";
-import {BrowserRouter,  } from "react-router-dom";
+import {BrowserRouter,} from "react-router-dom";
 import {Route} from "react-router-dom";
 import Message from "./Components/Dialogs/Message/Message";
-const App = (props) => {
 
+const App = (props) => {
 
 
     return (
@@ -17,8 +17,11 @@ const App = (props) => {
                 <Header/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-                    <Route path="/message" render={() => <Dialogs dialogs={props.dialogs} messages={props.messages} />}/>
-                    <Route path="/profile" render={() => <Profile posts={props.posts} />}/>
+                    <Route path="/message"
+                           render={() => <Dialogs state={props.state.dialogsPage}
+                                                  state={props.state.dialogsPage}/>}/>
+                    <Route path="/profile"
+                           render={() => <Profile state={props.state.profilePage}/>}/>
 
                 </div>
 
