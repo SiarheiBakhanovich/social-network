@@ -7,26 +7,29 @@ import Dialogs from "./Components/Dialogs/Dialogs";
 import {BrowserRouter,} from "react-router-dom";
 import {Route} from "react-router-dom";
 import Message from "./Components/Dialogs/Message/Message";
+import {addPost} from "./redux/state";
 
 const App = (props) => {
 
 
     return (
-        <BrowserRouter>
-            <div className='app-wrapper'>
-                <Header/>
-                <Navbar/>
-                <div className='app-wrapper-content'>
-                    <Route path="/message"
-                           render={() => <Dialogs state={props.state.dialogsPage}
-                                                  state={props.state.dialogsPage}/>}/>
-                    <Route path="/profile"
-                           render={() => <Profile state={props.state.profilePage}/>}/>
 
-                </div>
+        <div className='app-wrapper'>
+            <Header/>
+            <Navbar/>
+            <div className='app-wrapper-content'>
+                <Route path="/message"
+                       render={() => <Dialogs state={props.state.dialogsPage}
+                                              state={props.state.dialogsPage}/>}/>
+                <Route path="/profile"
+                       render={() => <Profile
+                           state={props.state.profilePage}
+                           addPost={props.addPost}/>}/>
 
             </div>
-        </BrowserRouter>
+
+        </div>
+
     );
 }
 

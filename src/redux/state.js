@@ -1,5 +1,4 @@
-
-
+import {rerenderEntireThree} from "../render";
 
 let state = {
     profilePage: {
@@ -12,7 +11,7 @@ let state = {
     },
 
     dialogsPage: {
-        dialogs:[
+        dialogs: [
             {id: 1, name: 'Serhio'},
             {id: 2, name: 'Justin'},
             {id: 3, name: 'Toni'},
@@ -30,6 +29,20 @@ let state = {
         ]
     }
 
+
+}
+
+
+export let addPost = (postMessage) => {
+
+    let newPost = {
+        id: 5,
+        message: postMessage,
+        likescount: 0
+
+    };
+    state.profilePage.posts.push(newPost);
+    rerenderEntireThree(state);
 }
 
 export default state;
