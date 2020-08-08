@@ -1,5 +1,9 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+import profileReducer from "./profile-reduser";
+import dialogsReducer from "./dialogs-reduser";
+import navbarReducer from "./navbar-reduser";
+
+
+
 
 let store = {
     _state: {
@@ -29,8 +33,12 @@ let store = {
                 {id: 4, message: 'Notorius BIG'},
                 {id: 5, message: 'how?'},
                 {id: 6, message: 'brr'}
-            ]
-        }
+            ],
+
+            newMessageBody: ""
+        },
+
+        navbar : {}
 
 
     },
@@ -47,30 +55,24 @@ let store = {
 
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likescount: 0
 
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.navbar = navbarReducer(this._state.navbar, action);
 
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state);
-        }
+        this._callSubscriber(this._state);
+
+
     }
 
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST});
 
 
 
-export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
+
+
+
 
 
 
