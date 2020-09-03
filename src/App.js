@@ -7,7 +7,7 @@ import Dialogs from "./Components/Dialogs/Dialogs";
 import {BrowserRouter,} from "react-router-dom";
 import {Route} from "react-router-dom";
 import Message from "./Components/Dialogs/Message/Message";
-import {addPost} from "./redux/state";
+import {addPost} from "./redux/store";
 
 const App = (props) => {
 

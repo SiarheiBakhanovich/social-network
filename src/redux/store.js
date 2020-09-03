@@ -14,7 +14,7 @@ let store = {
                 {id: 3, message: 'wolf amoung us', likescount: 34},
                 {id: 4, message: 'a am Batman', likescount: 49}
             ],
-            newPostText: 'it kama'
+            newPostText: 'Heeei'
         },
 
         dialogsPage: {

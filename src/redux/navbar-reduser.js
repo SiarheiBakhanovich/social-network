@@ -1,6 +1,6 @@
+let initialState = {};
 
-
- const navbarReducer = (state, action) => {
+ const navbarReducer = (state = initialState, action) => {
 
 
 
