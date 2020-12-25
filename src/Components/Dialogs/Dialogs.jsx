@@ -3,6 +3,7 @@ import s from './Dialogs.module.css'
 import {NavLink, Redirect} from "react-router-dom";
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
+import AddMessageForm from "./Message/AddMessageForm";
 
 
 const Dialogs = (props) => {
@@ -18,15 +19,9 @@ const Dialogs = (props) => {
 
     let newMessageBody = state.newMessageBody;
 
-    let onSendMessageClick = () => {
 
-        props.sendMessage();
-
-    }
-
-    let onNewMessageChange = (e) => {
-        let body = e.target.value;
-        props.updateNewMessageBody(body);
+    let addNewMessage = (values) => {
+    props.sendMessage(values.newMessageBody);
 
     }
 
@@ -42,21 +37,13 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 <div>{messagesElements}</div>
-                <div>
-                    <div><textarea value={newMessageBody}
-                                   onChange={onNewMessageChange}
-                                   placeholder="Enter your message"/>
-                    </div>
-                    <div>
-                        <button onClick={onSendMessageClick}>Send</button>
-                    </div>
-                </div>
-
 
             </div>
+            <AddMessageForm onSubmit={addNewMessage}/>
         </div>
     )
 }
+
 
 
 export default Dialogs;
