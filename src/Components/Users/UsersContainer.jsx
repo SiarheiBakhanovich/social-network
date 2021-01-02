@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {
     follow,
     setCurrentPage,
-    unfollow, toggleFollowingProgress,  requestUsers
+    unfollow, toggleFollowingProgress, requestUsers
 } from "../../redux/users-reduser";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
@@ -21,14 +21,14 @@ class UsersContainer extends React.Component {
 
 
     componentDidMount() {
-
-        this.props.getUsers(this.props.currentPage, this.props.pageSize);
+        const {currentPage,pageSize } = this.props;
+        this.props.getUsers(currentPage, pageSize);
 
     }
 
     onPageChanged = (pageNumber) => {
-
-        this.props.getUsers(pageNumber, this.props.pageSize);
+        const {pageSize} = this.props;
+        this.props.getUsers(pageNumber, pageSize);
 
 
     }
@@ -37,32 +37,21 @@ class UsersContainer extends React.Component {
 
         return <>
             {this.props.isFetching ?
-                <Preloader/> : null }
+                <Preloader/> : null}
             <Users totalUsersCount={this.props.totalUsersCount}
-                         pageSize={this.props.pageSize}
-                         currentPage={this.props.currentPage}
-                         onPageChanged={this.onPageChanged}
-                         users={this.props.users}
-                         follow={this.props.follow}
-                         unfollow={this.props.unfollow}
-                        followingInProgress={this.props.followingInProgress}
+                   pageSize={this.props.pageSize}
+                   currentPage={this.props.currentPage}
+                   onPageChanged={this.onPageChanged}
+                   users={this.props.users}
+                   follow={this.props.follow}
+                   unfollow={this.props.unfollow}
+                   followingInProgress={this.props.followingInProgress}
 
-        />
-             </>
+            />
+        </>
 
     }
 }
-
-/*let mapStateToProps = (state) => {
-    return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
-    }
-}*/
 
 
 let mapStateToProps = (state) => {
