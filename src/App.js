@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navbar from "./Components/Navbar/Navbar";
-import {BrowserRouter, Route, withRouter} from "react-router-dom";
+import {HashRouter, Route, withRouter} from "react-router-dom";
 //import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import UsersContainer from "./Components/Users/UsersContainer";
 //import ProfileContainer from "./Components/Profile/ProfileContainer";
@@ -68,11 +68,11 @@ const AppContainer = compose(
 
 const MainApp = () => {
     return <React.StrictMode>
-        <BrowserRouter>
+        <HashRouter basename={process.env.PUBLIC_URL}>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     </React.StrictMode>
 }
 
